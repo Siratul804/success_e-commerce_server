@@ -13,7 +13,7 @@ const {
 router.post("/admin/SignUp", SignUp);
 router.post("/admin/SignIn", SignIn);
 router.post("/admin/tokenIsValied", tokenValid);
-router.get("/admin/getUser", AdminAuth, getUser);
-router.delete("/admin/userDelete", AdminAuth, userDelete);
+router.get("/admin/getUser", getUser);
+router.delete("/admin/userDelete/:id", userDelete);
 
 module.exports = router;
