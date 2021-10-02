@@ -1,7 +1,7 @@
 const Service = require("../models/service");
 
 exports.postService = async (req, res) => {
-  const { name, price, description } = req.body;
+  const { name, price, description, categories } = req.body;
 
   const id = Math.random().toString(26).slice(2);
 
@@ -10,10 +10,11 @@ exports.postService = async (req, res) => {
     name: name,
     price: price,
     description: description,
+    categories: categories,
     image: req.file.originalname,
   });
 
-  console.log(id, name, price, description);
+  console.log(id, name, price, description, categories);
 
   newService
     .save()
@@ -53,7 +54,7 @@ exports.updateServiceImg = async (req, res) => {
   );
 };
 exports.updateServiceText = async (req, res) => {
-  const { newName, newPrice, newDescription } = req.body;
+  const { newName, newPrice, newDescription, newCategories } = req.body;
   console.log(newName, newDescription, newPrice);
 
   Service.findOneAndUpdate(
@@ -62,6 +63,7 @@ exports.updateServiceText = async (req, res) => {
       name: newName,
       price: newPrice,
       description: newDescription,
+      categories: newCategories,
     },
     { new: true },
     (err, data) => {
